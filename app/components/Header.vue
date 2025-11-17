@@ -1,0 +1,10 @@
+<template>
+  <header>
+    <div>
+      TopBar
+    </div>
+    <div>
+      MainHeader
+    </div>
+  </header>
+</template>
