@@ -4,5 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/icon', '@nuxt/image'],
   css: ['~/assets/css/main.css'],
-  components: true
+  components: true,
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'
+        }
+      ]
+    }
+  }
 })

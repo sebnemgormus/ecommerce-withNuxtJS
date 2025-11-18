@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif; 
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  padding-inline: 0.625rem;
+  max-width: 75rem; 
+  margin-inline: auto; 
+  width: 100%;
+}
+/* Tablet */
+@media (min-width: 48rem) { 
+  .container {
+    padding-inline: 1.25rem; 
+  }
+}
+
+/* Desktop */
+@media (min-width: 64rem) { 
+  .container {
+    padding-inline: 3.125rem; 
+  }
+}
