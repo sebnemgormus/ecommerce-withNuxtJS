@@ -113,6 +113,16 @@ import phoneIcon from '~/assets/icons/phone.svg?raw';
     gap: 3rem;
   }
 
+  .topbar-left-storage,
+  .topbar-left-catalog {
+    transition: background-color 0.3s ease; 
+  }
+
+  .topbar-left-storage:hover,
+  .topbar-left-catalog:hover {
+    background: #4b4b4b;
+  }
+
   .phone-number {
     display: block;
   }

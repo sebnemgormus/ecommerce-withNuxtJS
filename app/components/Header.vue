@@ -199,7 +199,7 @@ const toggleMobileMenu = () => {
 /* Desktop */
 @media (min-width: 64rem) { 
   .header {
-    padding-bottom: 1rem; 
+    padding-bottom: 0.5rem; 
   }
 
   .main-header {
@@ -209,5 +209,13 @@ const toggleMobileMenu = () => {
 .mobile-search-icon {
     display: none;
   }
+
+  .nav-menu li a {
+  transition: background-color 0.3s ease; 
+}
+
+.nav-menu li a:hover{
+  background: #fafafa;
+}
 }
 </style>
