@@ -73,7 +73,6 @@ const toggleMobileMenu = () => {
   align-items: center;
   background-color: #ffffff;
   width: 100%; 
-  padding-bottom: 0.50rem; 
 }
 
 .main-header .header-left .logo {
@@ -135,6 +134,10 @@ const toggleMobileMenu = () => {
 
 /* Tablet */
 @media (min-width: 48rem) { 
+  .header {
+    padding-bottom: 1rem; 
+  }
+
   .main-header {
     padding-top: 0.5rem; 
 
@@ -195,6 +198,10 @@ const toggleMobileMenu = () => {
 
 /* Desktop */
 @media (min-width: 64rem) { 
+  .header {
+    padding-bottom: 1rem; 
+  }
+
   .main-header {
     padding-top: 0.50rem; 
   }

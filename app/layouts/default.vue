@@ -4,6 +4,7 @@
     <div>
         <TopBar />
         <Header />
+        <slot />
     </div>
 </template>
 

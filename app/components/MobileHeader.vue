@@ -33,7 +33,7 @@
       <div class="mobile-action-links" v-if="currentMenu === 'main'">
         <ul>
           <li>
-            <NuxtLink to="/profile" @click="$emit('close')">
+            <NuxtLink to="/" @click="$emit('close')">
               <div class="action-group">
                 <div class="link-content">
                   <span>My profile</span>
@@ -43,7 +43,7 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/orders" @click="$emit('close')">
+            <NuxtLink to="/" @click="$emit('close')">
               <div class="action-group">
                 <div class="link-content">
                   <span>Order history</span>
@@ -53,7 +53,7 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/help" @click="$emit('close')">
+            <NuxtLink to="/" @click="$emit('close')">
               <div class="action-group">
                 <div class="link-content">
                   <span>Help center</span>
@@ -63,7 +63,7 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/logout" @click="$emit('close')">
+            <NuxtLink to="/" @click="$emit('close')">
               <div class="action-group">
                 <div class="link-content">  
                   <span>Log out</span>
