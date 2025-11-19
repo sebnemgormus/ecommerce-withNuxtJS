@@ -104,5 +104,9 @@ display: flex;
     margin-bottom: 2.5rem;
     margin-top: 2rem;
     }
+    .featured-products {
+    background-color: #ffffff;
+    padding: 1rem 0 2.5rem 0;
+   }
 }
 </style>
