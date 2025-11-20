@@ -29,7 +29,7 @@ const cartStore = useCartStore();
 
 <style scoped>
 .checkout-page {
-  padding: 3rem 1rem 0rem;
+  padding: 1rem 1rem 0rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -94,6 +94,10 @@ h2 {
 
 /* Desktop */
 @media (min-width: 48rem) {
+
+  .checkout-page {
+  padding: 3rem 1rem 0rem;
+  }
     .checkout-layout {
     display: flex;
     flex-direction: row; 
