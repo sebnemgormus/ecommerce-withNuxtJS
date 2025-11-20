@@ -79,7 +79,7 @@ const formatPrice = (price) => {
     font-size: 20px;
     font-weight: 500;
     color: #2A2A48;
-    margin-top: 0;
+    margin-top: 1.5rem;
     padding-bottom: 15px;
     margin-bottom: 20px;
 }

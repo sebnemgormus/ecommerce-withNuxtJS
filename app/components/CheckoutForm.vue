@@ -2,7 +2,7 @@
   <div class="checkout-left">
     <div class="section-container">
         <h3 class="section-title">
-            <!-- <img src="@/assets/icons/shipping.svg" alt="Shipping" class="icon" />  -->
+            <span v-html="CheckoutIcon" class="title-icon"></span>
             Shipping details
         </h3>
         <form class="shipping-form">
@@ -54,18 +54,18 @@
     
     <div class="section-container">
         <h3 class="section-title">
-            <!-- <img src="@/assets/icons/payment.svg" alt="Payment" class="icon" />  -->
+            <span v-html="PaymentIcon" class="title-icon"></span>
             Payment details
         </h3>
         <div class="payment-method-block">
-            <div class="card-preview">
+            <!-- <div class="card-preview">
                 <div class="card-number-display">0000 0000 0000 0000</div>
                 <div class="card-holder-display">Card Holder</div>
                 <div class="card-exp-cvv">
                     <span>MM/YY</span>
-                    <span class="cvv-box">XXX</span>
+                    <span class="cvv-box"></span>
                 </div>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="cardHolderName">Card Holder Name *</label>
@@ -86,10 +86,13 @@
                 </div>
                 <div class="form-group">
                     <label for="cvv">CVV *</label>
-                    <input type="text" id="cvv" required placeholder="XXX">
+                    <input type="text" id="cvv" required placeholder="">
                 </div>
             </div>
-            <p class="required-fields-note">* Required fields</p>
+            <div>
+                <p class="required-fields-note" style="margin-bottom: 1rem;">* Required fields</p>
+                <p class="required-fields-note" style="margin-bottom: 1rem;">* Required fields</p>
+            </div>
             <button class="pay-now-btn">
                 PAY NOW
             </button>
@@ -99,6 +102,9 @@
 </template>
 
 <script setup lang="ts">
+
+import CheckoutIcon from '~/assets/icons/checkout.svg?raw'
+import PaymentIcon from '~/assets/icons/payment.svg?raw'
 
 </script>
 
@@ -127,22 +133,33 @@
     margin-bottom: 8px;
 }
 
-.section-title .icon {
-    width: 20px;
-    height: 20px;
+
+.section-title .title-icon {
+    display: flex; 
+    align-items: center;
+    line-height: 1; 
+    padding: 8px; 
+    background-color: #F8F8F8; 
+    border-radius: 4px; 
 }
 
 .form-row {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
 }
 
-.form-row .expire-date-cvv {
+.form-row.expire-date-cvv {
     display: flex;
-    flex-direction: column;
-    gap: 44px;
-  
+    flex-direction: row; 
+    gap: 20px;
+    margin-top: 1.5rem;
 }
+
+.form-row.expire-date-cvv .form-group {
+    flex: 1 1 50%;
+    width: auto; 
+}
+
 
 .new-group {
     flex: 1 1 50%; 
@@ -215,7 +232,7 @@ input:focus, textarea:focus, .custom-select:focus {
 }
 
 .pay-now-btn {
-    width: 100%; 
+    width: 50%; 
     background-color: #ffc0f6; 
     color: white; 
     border: none; 
@@ -238,6 +255,17 @@ input:focus, textarea:focus, .custom-select:focus {
 
     .section-container {
         margin-top: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-row {
+        flex-direction: row; 
+        gap: 20px;
+    }
+    
+    .form-group {
+        flex: 1; 
+        width: auto;
     }
 }
 

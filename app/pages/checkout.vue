@@ -16,6 +16,7 @@
       <CartSummary class="order-summary" />
     </div>
   </div>
+  <div class="line"></div>
 </template>
 
 <script setup lang="ts">
@@ -31,7 +32,6 @@ const cartStore = useCartStore();
   padding: 3rem 1rem 0rem;
   max-width: 1200px;
   margin: 0 auto;
-  border-bottom: 1px solid #E0E0E0;
 }
 
 .breadcrumb {
@@ -87,6 +87,11 @@ h2 {
   text-align: center;
 }
 
+.line {
+  border: 0.1px solid #eeeeee;
+  opacity: 0.5;
+}
+
 /* Desktop */
 @media (min-width: 48rem) {
     .checkout-layout {
@@ -107,6 +112,5 @@ h2 {
   h2 {
       font-size: 34px;
   }
-
 }
 </style>
