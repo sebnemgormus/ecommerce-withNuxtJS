@@ -232,7 +232,7 @@ input:focus, textarea:focus, .custom-select:focus {
 }
 
 .pay-now-btn {
-    width: 50%; 
+    width: 100%; 
     background-color: #ffc0f6; 
     color: white; 
     border: none; 
@@ -266,6 +266,10 @@ input:focus, textarea:focus, .custom-select:focus {
     .form-group {
         flex: 1; 
         width: auto;
+    }
+
+    .pay-now-btn {
+        width: 50%;
     }
 }
 

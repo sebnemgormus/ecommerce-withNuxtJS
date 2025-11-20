@@ -124,6 +124,7 @@ import banner from '@/assets/images/banner.png';
   margin-bottom: 0.2rem;
   font-weight: 400;
   text-align: left;
+  font-family: 'Roboto', sans-serif;
 }
 
 .promo-headline {
@@ -141,6 +142,7 @@ import banner from '@/assets/images/banner.png';
   color: #00106B;
   line-height: 1.1;
   text-align: left;
+  font-family: 'Rubik', sans-serif;
 }
 
 .discount-label {
@@ -150,6 +152,7 @@ import banner from '@/assets/images/banner.png';
   color: #00106B;
   margin-bottom: 0.7rem;
   text-align: left;
+  font-family: 'Rubik', sans-serif;
 }
 
 .shop-btn {
@@ -169,8 +172,6 @@ import banner from '@/assets/images/banner.png';
 .shop-btn:hover {
   background-color: #00808a;
 }
-
-/* FIX */
 
 /* Desktop */ 
 
@@ -215,6 +216,16 @@ import banner from '@/assets/images/banner.png';
     align-items: center;
   }
 
+  .promo-graphic-right { 
+    z-index: 999999;
+  }
+
+  .promo-graphic-right img{ 
+    z-index: 999999;
+    margin-right: 18rem;
+  }
+
+
  .promo-graphic-left {
     width: 80%;     
     height: auto;
@@ -233,7 +244,7 @@ import banner from '@/assets/images/banner.png';
   }
 
   .promo-img-right {
-    width: 100%;
+    width: 110%;
     height: 100%;
     -o-object-fit: contain;
     object-fit: contain;
@@ -243,9 +254,9 @@ import banner from '@/assets/images/banner.png';
 
   .promo-content {
     grid-column: 2 / 3;
-    padding: 0rem 0rem 2rem 2rem;
-    height: 118%;
-    margin-top: 0.5rem;
+    padding: 0rem 0.5rem 0rem 2rem;
+    height: 96%;
+    margin-top: -1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -258,11 +269,16 @@ import banner from '@/assets/images/banner.png';
 
   .shop-btn {
     padding: 11px 10px;
-    width: 36%;
+    width: 38%;
   }
 
   .promo-banner {
     display: inline-block;
+  }
+
+  .discount-label, .discount {
+  font-size: 34px;
+
   }
 }
 
