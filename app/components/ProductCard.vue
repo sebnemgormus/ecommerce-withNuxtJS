@@ -6,11 +6,11 @@
       </div>
       <div class="product-actions-overlay">
         <button class="action-btn quick-view">
-          <img src="@/assets/icons/eye.svg" alt="Hızlı Görüntüleme" />
+          <img src="@/assets/icons/eye.svg" alt="Quick View" />
           Quick View
         </button>
-        <button class="action-btn add-to-cart">
-          <img src="@/assets/icons/plus.svg" alt="Sepete Ekle" />
+        <button class="action-btn add-to-cart" @click="handleAddToCart">
+          <img src="@/assets/icons/plus.svg" alt="Add to Cart" />
           Add
         </button>
       </div>
@@ -20,16 +20,18 @@
       <p class="product-title-line">
         {{ getTitleAndSubtitle(product) }}
       </p>
-      <button class="mobile-add-btn">
-        <img src="@/assets/icons/plus.svg" alt="Sepet" />
-        ADD
-      </button>
+     
+       <button class="mobile-add-btn"  @click="handleAddToCart">
+          <img src="@/assets/icons/plus.svg" alt="Add to Cart" />
+          Add
+        </button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
+import { useCartStore } from '@/stores/cart';
 
 const props = defineProps({
   product: {
@@ -37,6 +39,15 @@ const props = defineProps({
     required: true,
   },
 });
+
+const cartStore = useCartStore();
+
+const handleAddToCart = () => {
+
+  cartStore.addToCart(props.product);
+  
+  console.log(`${props.product.title} sepete eklendi`);
+};
 
 const formatPrice = (price) => {
   const tlPrice = (price * 8.5).toFixed(2).replace('.', ','); 
@@ -224,7 +235,7 @@ const getTitleAndSubtitle = (product) => {
   }
 
   .action-btn:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .product-image-wrapper {

@@ -17,7 +17,12 @@
             <span v-html="ArrowDown" class="arrow-svg-icon"></span>
           </div>
           <span v-html="mobilesearchIcon" class="mobile-search-icon"></span>
-          <span v-html="BasketIcon" class="basket-icon"></span>
+          <NuxtLink to="/checkout" class="basket-link">
+            <span v-html="BasketIcon" class="basket-icon"></span>
+             <span v-if="cartStore.totalQuantity > 0" class="cart-badge">
+                {{ cartStore.totalQuantity }}
+            </span>
+          </NuxtLink>
           <button class="burger-btn" @click="toggleMobileMenu">☰</button>
         </div>
       </div>
@@ -44,6 +49,7 @@
 </template>
 
 <script setup>
+
 import { ref } from 'vue';
 import MobileHeader from './MobileHeader.vue';
 import SearchBar from '~/components/Searchbar.vue'
@@ -51,8 +57,10 @@ import BasketIcon from '~/assets/icons/Basket.svg?raw'
 import mobilesearchIcon from '~/assets/icons/mainsearch.svg?raw'
 import Avatar from '~/assets/icons/Avatar.svg?raw'
 import ArrowDown from '~/assets/icons/arrowdown.svg?raw'
+import { useCartStore } from '@/stores/cart'; 
 
 const isMenuOpen = ref(false);
+const cartStore = useCartStore();
 
 const toggleMobileMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -61,10 +69,12 @@ const toggleMobileMenu = () => {
 </script>
 
 <style scoped>
+
 .header {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 9px;
 }
 
 .main-header {
@@ -86,7 +96,6 @@ const toggleMobileMenu = () => {
 
 .main-header .header-right {
   display: flex;
-  gap: 2rem; 
   align-items: center;
 }
 
@@ -130,6 +139,31 @@ const toggleMobileMenu = () => {
 
 .mobile-search-icon {
   display: inline-block;
+}
+
+.basket-link {
+    position: relative; 
+    text-decoration: none; 
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -11px;
+    right: 35px;
+    background-color: #fa4c44; 
+    color: white;
+    border-radius: 50%; 
+    padding: 3px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+    min-width: 18px; 
+    text-align: center;
+    z-index: 10;
 }
 
 /* Tablet */
@@ -217,5 +251,6 @@ const toggleMobileMenu = () => {
 .nav-menu li a:hover{
   background: #fafafa;
 }
+
 }
 </style>
