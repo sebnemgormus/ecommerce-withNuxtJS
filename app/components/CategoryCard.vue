@@ -65,7 +65,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
   color: white;
   text-align: center;
   transition: background-color 0.3s ease;
