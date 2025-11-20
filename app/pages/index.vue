@@ -3,6 +3,7 @@
         <HeroSlider /> 
         <FeaturedProducts />
         <Newsletter />
+        <PromotionBlock />
         </div>
 </template>
 
@@ -11,5 +12,6 @@
 import HeroSlider from '~/components/HeroSlider.vue'
 import FeaturedProducts from '~/components/FeaturedProducts.vue'
 import Newsletter from '~/components/Newsletter.vue'
+import PromotionBlock from '~/components/PromotionBlock.vue'
 
 </script>
