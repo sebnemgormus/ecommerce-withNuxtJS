@@ -27,22 +27,17 @@
             <p :class="{'in-stock': product.stock > 0, 'out-stock': product.stock === 0}">
               Stock Status: 
               <span v-if="product.stock > 0">
-                **{{ product.availabilityStatus }}** ({{ product.stock }} units)
+                {{ product.availabilityStatus }} ({{ product.stock }} units)
               </span>
               <span v-else>
-                **Out of Stock**
+                Out of Stock
               </span>
             </p>
             <p v-if="product.shippingInformation" class="qv-shipping">
-              🚚 Delivery: **{{ product.shippingInformation }}**
+              Delivery: {{ product.shippingInformation }}
             </p>
           </div>
-          <div class="qv-actions">
-            <button class="qv-add-to-cart" @click="handleAddToCart(product)" :disabled="product.stock === 0">
-              <span v-if="product.stock > 0">Add</span>
-              <span v-else>Out of Stock</span>
-            </button>
-          </div>
+        
         </div>
       </div>
       <div v-else class="loading-state">
@@ -72,13 +67,6 @@ const cartStore = useCartStore();
 
 const closeModal = () => {
   emit('close');
-};
-
-const handleAddToCart = (product) => {
-  if (product.stock > 0) {
-    cartStore.addToCart(product);
-    closeModal(); 
-  }
 };
 
 const formatPrice = (price) => {
@@ -222,42 +210,8 @@ const formatPrice = (price) => {
   margin-top: 30px;
 }
 
-.qv-add-to-cart {
-  padding: 12px 25px;
-  background-color: #FF27AD;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  width: 32%;
-}
-
-.qv-add-to-cart:hover:not(:disabled) {
-    background-color: #F1129C;
-}
-
-.qv-add-to-cart:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.qv-more-details {
-  margin-left: 20px;
-  color: #FF27AD;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  transition: color 0.3s;
-}
-
-.qv-more-details:hover {
-    color: #F1129C;
-}
-
 /* Desktop */
+
 @media (min-width: 768px) {
   .product-quick-details {
     flex-direction: row;

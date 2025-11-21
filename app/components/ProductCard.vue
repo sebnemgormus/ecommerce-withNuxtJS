@@ -7,13 +7,22 @@
       <div class="product-actions-overlay">
         <button class="action-btn quick-view" @click="handleQuickView">
           <span class="btn-inner">
-            <img src="@/assets/icons/eye.svg" alt="Quick View" />
+            <img src="@/assets/icons/eye.svg" alt="Quick View" /> 
             Quick View
           </span>
         </button>
-        <button class="action-btn add-to-cart" @click="handleAddToCart">
-          <img src="@/assets/icons/plus.svg" alt="Add to Cart" />
-          Add
+        <button 
+          class="action-btn add-to-cart" 
+          @click="handleAddToCart"
+          :class="{ 'added-success': isAdded }"
+        >
+          <template v-if="isAdded">
+            ✅ Added
+          </template>
+          <template v-else>
+            <img src="@/assets/icons/plus.svg" alt="Add to Cart" />
+            Add
+          </template>
         </button>
       </div>
     </div>
@@ -22,48 +31,66 @@
       <p class="product-title-line">
         {{ getTitleAndSubtitle(product) }}
       </p>
-       <button class="mobile-add-btn"  @click="handleAddToCart">
+      <button 
+        class="mobile-add-btn" 
+        @click="handleAddToCart"
+        :class="{ 'added-success': isAdded }"
+      >
+        <template v-if="isAdded">
+          ✅ ADDED
+        </template>
+        <template v-else>
           <img src="@/assets/icons/plus.svg" alt="Add to Cart" />
           Add
-        </button>
+        </template>
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+
+import { defineProps, defineEmits, ref } from 'vue';
 import { useCartStore } from '@/stores/cart';
 
 const emit = defineEmits(['quick-view']);
 
 const props = defineProps({
-  product: {
-    type: Object,
-    required: true,
-  },
+    product: {
+        type: Object,
+        required: true,
+    },
 });
 
 const cartStore = useCartStore();
 
+const isAdded = ref(false); 
+
 const handleQuickView = () => {
-  emit('quick-view', props.product); 
+    emit('quick-view', props.product);
 };
 
 const handleAddToCart = () => {
-
-  cartStore.addToCart(props.product);
-
-  console.log(`${props.product.title} sepete eklendi`);
+    cartStore.addToCart(props.product);
+    
+    isAdded.value = true;
+    
+    setTimeout(() => {
+        isAdded.value = false;
+    }, 800); 
+    
+    console.log(`${props.product.title} sepete eklendi`);
 };
 
 const formatPrice = (price) => {
-  const tlPrice = (price * 8.5).toFixed(2).replace('.', ','); 
-  return `${tlPrice} TL`;
+    const tlPrice = (price * 8.5).toFixed(2).replace('.', ','); 
+    return `${tlPrice} TL`;
 };
 
-const getTitleAndSubtitle = (product) => {  
+const getTitleAndSubtitle = (product) => {  
     return product.title;
 };
+
 </script>
 
 <style scoped>
@@ -228,6 +255,15 @@ const getTitleAndSubtitle = (product) => {
     height: 16px;
   }
 
+  .action-btn.added-success {
+    background-color: #4CAF50 !important; 
+  }
+
+
+  .mobile-add-btn.added-success {
+    background-color: #4CAF50 !important;
+  }
+
   .btn-inner {
     display: inline-flex;
     align-items: center;
@@ -254,6 +290,16 @@ const getTitleAndSubtitle = (product) => {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
+  .action-btn.added-success:hover {
+    background-color: #4CAF50 !important;
+  }
+
+  .action-btn template {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem; 
+  }
+
   .product-image-wrapper {
     height: 220px;
   }
@@ -263,7 +309,6 @@ const getTitleAndSubtitle = (product) => {
     font-weight: 700;
   }
 
-    
   .product-title-line {
     font-size: 16px;
     font-weight: 400;
@@ -281,6 +326,6 @@ const getTitleAndSubtitle = (product) => {
 
   .product-card {
     padding-bottom: 0rem;
-  }
+  } 
 }
 </style>
