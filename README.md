@@ -1,75 +1,70 @@
-# Nuxt Minimal Starter
+# E-Commerce Website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+[![Nuxt.js](https://img.shields.io/badge/Nuxt.js-00DC82?style=for-the-badge&logo=nuxt.js&logoColor=white)](https://nuxtjs.org/)
+[![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![Pinia](https://img.shields.io/badge/Pinia-DB1C81?style=for-the-badge&logo=pinia&logoColor=white)](https://pinia.vuejs.org/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-## Setup
+---
 
-Make sure to install dependencies:
+## Live Demo
+[View Live Application](https://ecommerce-with-nuxt-js.vercel.app/)
 
+---
+
+## Project Overview
+This project is a **mobile-first e-commerce website** built with **Nuxt.js**. It includes:
+
+- Responsive design  
+- API integration  
+- State management with **Pinia**  
+- Multi-page routing  
+
+The website fetches **featured products** from the [DummyJSON API](https://dummyjson.com/) and displays them dynamically.
+
+---
+
+## Built With
+- **Nuxt.js** – The front-end framework used  
+- **Vue.js** – Component-based JavaScript framework  
+- **Pinia** – State management library  
+- **HTML / CSS / JS** – Core web technologies  
+- **DummyJSON API** – Used to fetch featured products  
+- **Vercel** – Deployment platform  
+
+---
+
+## Features
+- Mobile-first, responsive design  
+- Dynamic product display from API  
+- Component-based architecture  
+- State management with **Pinia**  
+- Multi-page routing  
+
+---
+
+## Pages
+### 1. Home Page
+- Displays featured products dynamically from API  
+- Mobile-first, responsive layout  
+- Product cards with:  
+  - **Quick View modal**: Clicking opens a popup with product details  
+  - **Add-to-Cart functionality**: Clicking the button changes its state to **Added** to confirm the product has been added to the cart
+
+### 2. Checkout Page
+- Lists products added to the cart  
+- Shows product details, quantity, and total price  
+- Mobile-first layout for smooth checkout experience  
+
+---
+
+## Installation & Running
 ```bash
-# npm
+# Clone the repository
+git clone <your-repo-url>
+
+# Install dependencies
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Run the development server
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
