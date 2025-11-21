@@ -5,9 +5,11 @@
         <img :src="product.thumbnail" :alt="product.title" loading="lazy" />
       </div>
       <div class="product-actions-overlay">
-        <button class="action-btn quick-view">
-          <img src="@/assets/icons/eye.svg" alt="Quick View" />
-          Quick View
+        <button class="action-btn quick-view" @click="handleQuickView">
+          <span class="btn-inner">
+            <img src="@/assets/icons/eye.svg" alt="Quick View" />
+            Quick View
+          </span>
         </button>
         <button class="action-btn add-to-cart" @click="handleAddToCart">
           <img src="@/assets/icons/plus.svg" alt="Add to Cart" />
@@ -20,7 +22,6 @@
       <p class="product-title-line">
         {{ getTitleAndSubtitle(product) }}
       </p>
-     
        <button class="mobile-add-btn"  @click="handleAddToCart">
           <img src="@/assets/icons/plus.svg" alt="Add to Cart" />
           Add
@@ -33,6 +34,8 @@
 import { defineProps } from 'vue';
 import { useCartStore } from '@/stores/cart';
 
+const emit = defineEmits(['quick-view']);
+
 const props = defineProps({
   product: {
     type: Object,
@@ -42,10 +45,14 @@ const props = defineProps({
 
 const cartStore = useCartStore();
 
+const handleQuickView = () => {
+  emit('quick-view', props.product); 
+};
+
 const handleAddToCart = () => {
 
   cartStore.addToCart(props.product);
-  
+
   console.log(`${props.product.title} sepete eklendi`);
 };
 
@@ -198,40 +205,49 @@ const getTitleAndSubtitle = (product) => {
   
   .action-btn {
     flex-grow: 1;
+    flex-basis: 50%; 
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.25rem;
+    white-space: nowrap; 
+    overflow: hidden;
+    gap: 0.15rem;
     border: none;
     background: transparent;
     color: white;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    padding: 0.5rem 0;
     transition: background-color 0.2s;
     position: relative;
   }
 
   .action-btn img {
-      width: 16px; 
-      height: 16px;
+    width: 16px; 
+    height: 16px;
+  }
+
+  .btn-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem; 
   }
 
   .quick-view {
-      border-right: none;
+    border-right: none;
   }
 
   .quick-view::after {
     content: '';
     position: absolute;
-    right: 0; 
-    width: 0.5px; 
-    height: 60%; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    background-color: #ECECEC;
-    opacity: 0.2;
+    right: 0;
+    width: 1px;          
+    height: 60%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.25); 
   }
 
   .action-btn:hover {
@@ -241,10 +257,13 @@ const getTitleAndSubtitle = (product) => {
   .product-image-wrapper {
     height: 220px;
   }
+
   .product-price {
     font-size: 20px;
     font-weight: 700;
   }
+
+    
   .product-title-line {
     font-size: 16px;
     font-weight: 400;

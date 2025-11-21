@@ -13,15 +13,22 @@
           v-for="product in featuredProducts" 
           :key="product.id" 
           :product="product" 
+          @quick-view="openQuickViewModal" 
         />
       </div>
     </div>
+    <QuickViewModal 
+      :isVisible="showQuickViewModal"
+      :product="selectedProduct"
+      @close="closeQuickViewModal"
+    />
   </section>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import ProductCard from './ProductCard.vue'; 
+import QuickViewModal from './QuickviewModal.vue'; 
 
 const loading = ref(true);
 const error = ref(null);
@@ -47,10 +54,27 @@ const fetchProducts = async () => {
 onMounted(fetchProducts);
 
 const featuredProducts = computed(() => products.value.slice(0, 4));
+
+const showQuickViewModal = ref(false); 
+
+const selectedProduct = ref(null); 
+
+/**
+ * not: ProductCard'dan gelen 'quick-view' işlenmesi
+ @param {Object} product 
+ */
+const openQuickViewModal = (product) => {
+  selectedProduct.value = product;
+  showQuickViewModal.value = true;
+};
+
+const closeQuickViewModal = () => {
+  showQuickViewModal.value = false;
+  selectedProduct.value = null;
+};
 </script>
 
 <style scoped>
-
 .featured-products {
   background-color: #ffffff;
   padding: 1.5rem 0;
@@ -63,7 +87,7 @@ const featuredProducts = computed(() => products.value.slice(0, 4));
 }
 
 .section-title {
-display: flex; 
+  display: flex; 
   align-items: center; 
   text-align: center;
   color: #0099A8;
